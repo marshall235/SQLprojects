@@ -1,0 +1,35 @@
+\sql
+\connect root@localhost:3306
+/* connecting to mysql*/
+create database school;
+
+create table student (
+std_id int not null primary key,
+name varchar(18) not null,
+email varchar(28),
+phone_no int
+)
+insert into student (std_id, name, email, phone_no, gender, age) values
+ (1, 'james', 'james@gmail.com', 0797133112,'male',20), 
+(2, 'jack', 'jack@gmail.com', 0797133112,'male',18),
+(3, 'dan', 'dan@gmail.com', 0797112112,'male',50),
+(4, 'joseph', 'joseph@gmail.com', 123456789,'male',40),
+(5, 'Judith;, 'Judith@gmail.com', 072345678,'female',30),
+(6, 'Rachel', rachel@gmail.com', 0787667787, 'female',25),
+(7, 'David', 'david@gmail.com', 0798675678,'male',23)
+
+
+alter table student
+	add gender varcchar(200);
+alter table student
+	add age int;
+
+select * from student; # shows all the students.
+
+select name, age from student; # selects only name and age from students
+
+select * from student where age < 20# viewing students who are under 20 years
+select * from student where gender = 'male';# selecting only male students
+select * from student where gender = 'male' and age > 20;# selecting males who are 20 years and above
+select * from student where name like 'j%'# selecting students whose name starts with the letter j
+select std_id, name, email, phone_no, gender, age+1 as 'name' from student where name like 'j%'#Adding 1 on student's age whose name starts with the letter j
